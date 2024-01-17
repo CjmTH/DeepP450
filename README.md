@@ -17,7 +17,7 @@
 
    此外，需要对ESM-2的源码pretrained.py 进行以下改变：
    
-   ![微信图片_20240117141147](https://github.com/CjmTH/DeepP450/assets/156410487/17a9b67a-3b06-449f-a2e3-e114f8979469)
+    ![微信图片_20240117141147](https://github.com/CjmTH/DeepP450/assets/156410487/17a9b67a-3b06-449f-a2e3-e114f8979469)
 
 
 

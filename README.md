@@ -1,5 +1,5 @@
 配置环境
-1. Uni-mol
+1. # Uni-mol
    Uni-Mol 依托于深势科技基于 pytorch 开发的高性能分布式框架 Uni-Core，因此，应该先安装 Uni-Core, 可以直接参照 Uni-Core 的官方代码仓库，下面提供一种可能的配置方案。
 
    比如CUDA 版本为11.3，则可以使用如下命令：
@@ -12,7 +12,7 @@
    
    pip install
 
-3. ESM-2
+3. # ESM-2
    我们选择的是esm2_t33_650M_UR50D参数的ESM-2模型，需要先下载ESM-2权重文件与main.py文件放在同一个文件夹（https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt）
 
    此外，需要对ESM-2的源码pretrained.py 进行以下改变：

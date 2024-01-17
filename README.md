@@ -7,10 +7,11 @@
 
    下载 Uni-Mol 的代码，进行安装。
    先下载 [Uni-Mol](https://github.com/dptech-corp/Uni-Mol)
+   
    cd Uni-Mol/unimol
    pip install
 
-2. ESM-2
+3. ESM-2
    我们选择的是esm2_t33_650M_UR50D参数的ESM-2模型，需要先下载ESM-2权重文件与main.py文件放在同一个文件夹（https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt）
 
    此外，需要对ESM-2的源码进行以下改变：

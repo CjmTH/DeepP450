@@ -1,12 +1,12 @@
 # DeepP450: Predicting Human P450 Activities of Small Molecules by Integrating Pretrained Protein Language Model and Molecular Representation
-=
+
 
 ![model](https://github.com/CjmTH/DeepP450/assets/156410487/5064bb10-a6e8-46cf-9a00-cadb580ce710)
 
 
 
 ## 配置环境
- # Uni-mol
+ ### Uni-mol
    1. Uni-Mol 依托于深势科技开发的高性能分布式框架 Uni-Core，因此，应该先安装 Uni-Core, 可以直接参照 Uni-Core 的官方代码仓库，下面提供一种可能的配置方案。
 
       比如CUDA 版本为11.3，则可以使用如下命令：
@@ -22,7 +22,7 @@
 3. 下载Uni-Mol预训练模型权重，放在main文件夹。
     https://github.com/dptech-corp/Uni-Mol/releases/download/v0.1/mol_pre_no_h_220816.pt
 
- # ESM-2
+ ### ESM-2
    1. 本模型中ESM-2为esm2_t33_650M_UR50D版本，需要先下载ESM-2权重文件并放在main文件文件夹。 https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt
 
       此外，需要对ESM-2的源码pretrained.py 进行以下改变：

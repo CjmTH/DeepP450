@@ -22,11 +22,15 @@
     https://github.com/dptech-corp/Uni-Mol/releases/download/v0.1/mol_pre_no_h_220816.pt
 
  # ESM-2
-   本模型中ESM-2为esm2_t33_650M_UR50D版本，需要先下载ESM-2权重文件并放在main文件文件夹。 https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt
+   1. 本模型中ESM-2为esm2_t33_650M_UR50D版本，需要先下载ESM-2权重文件并放在main文件文件夹。 https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt
 
-   此外，需要对ESM-2的源码pretrained.py 进行以下改变：
+      此外，需要对ESM-2的源码pretrained.py 进行以下改变：
    
-   ![微信图片_20240117141147](https://github.com/CjmTH/DeepP450/assets/156410487/17a9b67a-3b06-449f-a2e3-e114f8979469)
+     ![微信图片_20240117141147](https://github.com/CjmTH/DeepP450/assets/156410487/17a9b67a-3b06-449f-a2e3-e114f8979469)
+
+    2. 我们基于P450真核生物对ESM-2微调，下载微调模型权重后放在main文件夹。
+
+   
 
 
 
@@ -34,6 +38,6 @@
 
 1. 数据格式可根据data/data_0/raw/train_0.csv格式进行编辑，data文件夹下需首先创建raw、intermediata和result三个文件夹，用于分子处理过程中文件生成；
 
-2. 本模型包含20个子模型，下载子模型权重后运行model.py即可；
+2. 本模型包含20个子模型，下载子模型权重后放在weight文件夹下，运行model.py即可；
 
 3. 最终预测结果整理为result.csv文件后运行metric.py即可获得最终集成模型软投票结果。

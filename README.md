@@ -26,7 +26,7 @@
 
       此外，需要对ESM-2的源码pretrained.py 进行以下改变：
    
-   ![微信图片_20240117141147](https://github.com/CjmTH/DeepP450/assets/156410487/17a9b67a-3b06-449f-a2e3-e114f8979469)
+ 	  ![微信图片_20240117141147](https://github.com/CjmTH/DeepP450/assets/156410487/17a9b67a-3b06-449f-a2e3-e114f8979469)
 
     2. 我们基于P450真核生物对ESM-2微调，下载微调模型权重后放在main文件夹。
 

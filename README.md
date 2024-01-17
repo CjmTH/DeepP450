@@ -1,4 +1,4 @@
-配置环境
+## 配置环境
  # Uni-mol
    Uni-Mol 依托于深势科技基于 pytorch 开发的高性能分布式框架 Uni-Core，因此，应该先安装 Uni-Core, 可以直接参照 Uni-Core 的官方代码仓库，下面提供一种可能的配置方案。
 
@@ -21,7 +21,7 @@
 
 
 
-运行模型训练与测试
+## 运行模型训练与测试
 
 1. 数据格式可根据data/data_0/raw/train_0.csv格式进行编辑，data文件夹下需首先创建raw、intermediata和result三个文件夹，用于分子处理过程中文件生成。
    

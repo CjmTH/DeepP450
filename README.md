@@ -21,7 +21,7 @@
 
 
 
-## 运行模型训练与测试
+## 模型训练与测试
 
 1. 数据格式可根据data/data_0/raw/train_0.csv格式进行编辑，data文件夹下需首先创建raw、intermediata和result三个文件夹，用于分子处理过程中文件生成。
    

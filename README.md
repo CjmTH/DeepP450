@@ -5,9 +5,7 @@
    比如CUDA 版本为11.3，则可以使用如下命令：
    pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu113
 
-   下载 Uni-Mol 的代码，进行安装。
-   
-   先下载 [Uni-Mol](https://github.com/dptech-corp/Uni-Mol)
+   下载 Uni-Mol 的代码，进行安装 [Uni-Mol](https://github.com/dptech-corp/Uni-Mol)
    
    cd Uni-Mol/unimol
    

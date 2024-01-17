@@ -1,5 +1,9 @@
 ## DeepP450: Predicting Human P450 Activities of Small Molecules by Integrating Pretrained Protein Language Model and Molecular Representation
 
+![Uploading model.png…]()
+
+
+
 ## 配置环境
  # Uni-mol
    1. Uni-Mol 依托于深势科技开发的高性能分布式框架 Uni-Core，因此，应该先安装 Uni-Core, 可以直接参照 Uni-Core 的官方代码仓库，下面提供一种可能的配置方案。

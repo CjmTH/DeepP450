@@ -9,6 +9,7 @@
    先下载 [Uni-Mol](https://github.com/dptech-corp/Uni-Mol)
    
    cd Uni-Mol/unimol
+   
    pip install
 
 3. ESM-2

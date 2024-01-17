@@ -23,13 +23,13 @@
     https://github.com/dptech-corp/Uni-Mol/releases/download/v0.1/mol_pre_no_h_220816.pt
 
  ### ESM-2
-   1. 本模型中ESM-2为esm2_t33_650M_UR50D版本，需要先下载ESM-2权重文件并放在main文件文件夹。 https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt
+   * 本模型中ESM-2为esm2_t33_650M_UR50D版本，需要先下载ESM-2权重文件并放在main文件文件夹。 https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt
 
       此外，需要对ESM-2的源码pretrained.py 进行以下改变：
    
  	  ![微信图片_20240117141147](https://github.com/CjmTH/DeepP450/assets/156410487/17a9b67a-3b06-449f-a2e3-e114f8979469)
 
-   2. 我们基于真核生物P450序列对ESM-2进行了微调，下载微调模型权重后放在main文件夹。
+   * 我们基于真核生物P450序列对ESM-2进行了微调，下载微调模型权重后放在main文件夹。
 
    
 

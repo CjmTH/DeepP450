@@ -12,11 +12,11 @@
    
       pip install
 
-3. 下载Uni-Mol预训练模型权重，并与main.py放在同一个文件夹。
+3. 下载Uni-Mol预训练模型权重，放在main文件夹。
     https://github.com/dptech-corp/Uni-Mol/releases/download/v0.1/mol_pre_no_h_220816.pt
 
  # ESM-2
-   本模型中ESM-2为esm2_t33_650M_UR50D版本，需要先下载ESM-2权重文件与main.py文件放在同一个文件夹。 https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt
+   本模型中ESM-2为esm2_t33_650M_UR50D版本，需要先下载ESM-2权重文件并放在main文件文件夹。 https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt
 
    此外，需要对ESM-2的源码pretrained.py 进行以下改变：
    
@@ -28,4 +28,4 @@
 
 1. 数据格式可根据data/data_0/raw/train_0.csv格式进行编辑，data文件夹下需首先创建raw、intermediata和result三个文件夹，用于分子处理过程中文件生成。
    
-3. 运行main.py即可。
+3. 运行model.py即可。

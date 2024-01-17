@@ -15,7 +15,7 @@
 3. ESM-2
    我们选择的是esm2_t33_650M_UR50D参数的ESM-2模型，需要先下载ESM-2权重文件与main.py文件放在同一个文件夹（https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt）
 
-   此外，需要对ESM-2的源码进行以下改变：
+   此外，需要对ESM-2的源码pretrained.py 进行以下改变：
    
    ![微信图片_20240117141147](https://github.com/CjmTH/P450/assets/156410487/7546e39e-bd8c-4ed2-8596-c9ba48aef00f)
 

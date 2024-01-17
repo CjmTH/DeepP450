@@ -41,4 +41,4 @@
 
 2. 本模型包含20个子模型，下载子模型权重后放在weight文件夹下，运行model.py即可；
 
-3. 最终预测结果整理为total_soft.csv文件后运行metric.py即可获得最终集成模型软投票结果。
+3. 最终预测结果整理为total_soft.csv文件后运行metric.py即可获得最终集成模型软投票结果。 

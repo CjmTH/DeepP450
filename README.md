@@ -13,7 +13,7 @@
    pip install
 
  # ESM-2
-   本模型中ESM-2为esm2_t33_650M_UR50D版本，需要先下载ESM-2权重文件与main.py文件放在同一个文件夹（https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt）
+   本模型中ESM-2为esm2_t33_650M_UR50D版本，需要先下载ESM-2权重文件与main.py文件放在同一个文件夹。（https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt）
 
    此外，需要对ESM-2的源码pretrained.py 进行以下改变：
    

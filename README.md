@@ -7,19 +7,19 @@
 
 ## 配置环境
  ### Uni-mol
-   1. Uni-Mol 依托于深势科技开发的高性能分布式框架 Uni-Core，因此，应该先安装 Uni-Core, 可以直接参照 Uni-Core 的官方代码仓库，下面提供一种可能的配置方案。
+   * Uni-Mol 依托于深势科技开发的高性能分布式框架 Uni-Core，因此，应该先安装 Uni-Core, 可以直接参照 Uni-Core 的官方代码仓库，下面提供一种可能的配置方案。
 
       比如CUDA 版本为11.3，则可以使用如下命令：
    
       pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu113
 
-   2. 下载 Uni-Mol 的代码，进行安装 [Uni-Mol](https://github.com/dptech-corp/Uni-Mol)
+   * 下载 Uni-Mol 的代码，进行安装 [Uni-Mol](https://github.com/dptech-corp/Uni-Mol)
    
       cd Uni-Mol/unimol
    
       pip install
 
-3. 下载Uni-Mol预训练模型权重，放在main文件夹。
+   * 下载Uni-Mol预训练模型权重，放在main文件夹。
     https://github.com/dptech-corp/Uni-Mol/releases/download/v0.1/mol_pre_no_h_220816.pt
 
  ### ESM-2

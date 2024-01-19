@@ -39,6 +39,6 @@
 
 1. 数据格式可根据data/data_0/raw/train_0.csv格式进行编辑，data文件夹下需首先创建raw、intermediata和result三个文件夹，用于分子处理过程中文件生成；
 
-2. 本模型包含20个子模型，下载子模型权重后放在weight文件夹下，运行model.py即可 https://www.alipan.com/s/Wyy14DP8MNA；
+2. 本模型包含20个子模型，下载子模型权重后放在weight文件夹下，运行model.py即可； https://www.alipan.com/s/Wyy14DP8MNA
 
 3. 最终预测结果整理为total_soft.csv文件后运行metric.py即可获得最终集成模型软投票结果。 

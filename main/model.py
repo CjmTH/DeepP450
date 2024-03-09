@@ -40,7 +40,7 @@ def set_random_seed(random_seed=1024): # set random seed
     th.backends.cudnn.deterministic = True
     th.backends.cudnn.enabled = False
 
-# 将小分子的smiles转为 3D conformation
+# smiles to 3D conformation
 def calculate_molecule_3D_structure():
     def get_smiles_list_():
         data_df = pd.read_csv("../data/data_0/raw/train_0.csv")
@@ -115,7 +115,6 @@ def calculate_molecule_3D_structure():
              open('../data/data_0/intermediate/smiles_to_conformation_dict.pkl', 'wb'))
     print('Valid smiles count:', len(smiles_to_conformation_dict))
 
-# 将训练集，验证集，测试集csv文件中的蛋白序列，小分子3D结构信息，label整合为data list
 def construct_data_list():
     data_df = pd.read_csv("../data/data_0/raw/train_0.csv")
     smiles_to_conformation_dict = pkl.load(
@@ -135,7 +134,7 @@ def construct_data_list():
             data_list.append(data_item)
     pkl.dump(data_list, open('../data/data_0/intermediate/data_list.pkl', 'wb'))
 
-# 将data list转为data loader，用于训练和测试
+
 def convert_data_list_to_data_loader():
     def convert_data_list_to_dataset_(data_list):
         dictionary = Dictionary.load('../data/data_0/raw/token_list.txt')
@@ -185,7 +184,7 @@ def convert_data_list_to_data_loader():
     data_loader_test = DataLoader(dataset_test, batch_size=batch_size, shuffle=False, collate_fn=dataset_test.collater)
     return data_loader_train, data_loader_valid, data_loader_test
 
-#Uni-Mol模型
+
 class UniMolModel(nn.Module):
     def __init__(self):
         super().__init__()
@@ -251,12 +250,12 @@ class UniMolModel(nn.Module):
         }
         return output
 
-# DeepP450的交叉注意力模块
+
 class TransformerDecoderLayer(nn.Module):
     def __init__(self):
         super().__init__()
-        self.layer_normalization_cross_attention_1 = nn.LayerNorm(1280) #ESM-2输出的蛋白特征维度
-        self.cross_attention = nn.MultiheadAttention(embed_dim=512, num_heads=8, kdim=1280, vdim=1280, batch_first=True)# 512是Uni-Mol输出的分子特征维度
+        self.layer_normalization_cross_attention_1 = nn.LayerNorm(1280) 
+        self.cross_attention = nn.MultiheadAttention(embed_dim=512, num_heads=8, kdim=1280, vdim=1280, batch_first=True)
         self.layer_normalization_cross_attention_2 = nn.LayerNorm(512)
         self.feed_forward_cross_attention = nn.Sequential(
             nn.Linear(512, 512),
@@ -273,11 +272,11 @@ class TransformerDecoderLayer(nn.Module):
         y = y + y_old
         return y
 
-# DeepP450的自注意力模块
+
 class TransformerEncoderLayer(nn.Module):
     def __init__(self):
         super().__init__()
-        self.layer_normalization_self_attention_1 = nn.LayerNorm(512) #512是交叉注意力模块的输出维度
+        self.layer_normalization_self_attention_1 = nn.LayerNorm(512) 
         self.self_attention = nn.MultiheadAttention(embed_dim=512, num_heads=8, kdim=512, vdim=512, batch_first=True)
         self.layer_normalization_self_attention_2 = nn.LayerNorm(512)
         self.feed_forward_self_attention = nn.Sequential(
@@ -297,14 +296,14 @@ class TransformerEncoderLayer(nn.Module):
         x = x + x_old
         return x
 
-# DeepP450模型
+
 class EsmUnimolClassifier(nn.Module):
     def __init__(self):
         super().__init__()
         self.molecule_encoder = UniMolModel()
-        self.molecule_encoder.load_state_dict(th.load('mol_pre_no_h_220816.pt')['model'], strict=False) #加载Uni-Mol预训练模型
-        self.protein_encoder, self.alphabet = esm.pretrained.esm2_t33_650M_UR50D() #加载ESM-2预训练模型
-        self.protein_encoder.load_state_dict(th.load("p450_eukaryota_esm_2.pth")) #加载用P450真核生物微调后的ESM-2权重
+        self.molecule_encoder.load_state_dict(th.load('mol_pre_no_h_220816.pt')['model'], strict=False) 
+        self.protein_encoder, self.alphabet = esm.pretrained.esm2_t33_650M_UR50D() 
+        self.protein_encoder.load_state_dict(th.load("p450_eukaryota_esm_2.pth")) 
         self.batch_converter = self.alphabet.get_batch_converter(truncation_seq_length=2048)
 
         self.transformer_layer_cross_attention = TransformerDecoderLayer()
@@ -327,11 +326,11 @@ class EsmUnimolClassifier(nn.Module):
     def forward(self, data_batch):
         data_batch = self.move_data_batch_to_cuda(data_batch)
 
-        #提取分子特征
+       
         molecule_encoder_output = self.molecule_encoder(data_batch)
         molecule_embedding = molecule_encoder_output['molecule_embedding']
 
-        #提取蛋白特征
+        
         sequence_batch = data_batch['input']['sequence']
         sequence_batch = [('', sequence) for sequence in sequence_batch]
         _, sequence_batch, token_batch = self.batch_converter(sequence_batch)
@@ -340,14 +339,14 @@ class EsmUnimolClassifier(nn.Module):
         protein_encoder_output = self.protein_encoder(token_batch, repr_layers=[33], return_contacts=False)
         protein_embedding = protein_encoder_output["representations"][33]
 
-        #将蛋白特征和分子特征依次输入交叉注意力，自注意力模块和下游模型
+       
         x = self.transformer_layer_cross_attention(molecule_embedding, protein_embedding, None)
         x1 = self.transformer_layer_self_attention(x)
-        x2 = x1[:, 0, :] #取CLS特征
+        x2 = x1[:, 0, :] 
         x3 = self.mlp(x2)
         return x3
 
-#评估函数
+
 def evaluate(model, data_loader, csv_save):
     model.eval()
     label_predict = th.tensor([], dtype=th.float32).cuda()
@@ -366,7 +365,7 @@ def evaluate(model, data_loader, csv_save):
     predict_label = np.argmax(label_predict, axis=1)
     label_true = label_true.cpu().numpy()
 
-    # 将测试集预测结果和真实值保存为csv文件
+   
     if csv_save == True:
         df = pd.DataFrame({'label_true': label_true, 'predict_label': predict_label, 'label_predict': label_predict[:, 1]})
         df.to_csv('label_predict_test_0.csv', index=False)
@@ -383,7 +382,7 @@ def evaluate(model, data_loader, csv_save):
               'precision': precision, 'recall': recall, 'f1_score': f1_score, "jaccard": jaccard}
     return metric
 
-# 训练函数
+
 def train(trial_version):
     data_loader_train, data_loader_validate, data_loader_test = convert_data_list_to_data_loader()
 
@@ -432,13 +431,13 @@ def train(trial_version):
         if epoch > current_best_epoch + max_bearable_epoch:
             break
 
-# 测试函数
+
 def test(trial_version):
     data_loader_train, data_loader_validate, data_loader_test = convert_data_list_to_data_loader()
 
     model = EsmUnimolClassifier()
     model.cuda()
-    model.load_state_dict(th.load(f"../weight/{trial_version}.pt")) #加载训练好的模型
+    model.load_state_dict(th.load(f"../weight/{trial_version}.pt"))
 
     metric_train = evaluate(model, data_loader_train, csv_save=False)
     metric_validate = evaluate(model, data_loader_validate, csv_save=False)
@@ -449,14 +448,14 @@ def test(trial_version):
 
 if __name__ == "__main__":
     set_random_seed(1024)
-    print("data_process start!") #开始数据处理
+    print("data_process start!") 
     calculate_molecule_3D_structure()
     construct_data_list()
 
-    print("train start!") #开始训练
-    train(trial_version='1')  # 1表示子模型的版本号
+    print("train start!") 
+    train(trial_version='1')  
 
     print("test start!")
-    test(trial_version='1') # 开始预测
+    test(trial_version='1') 
 
     print('All is well!')

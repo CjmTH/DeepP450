@@ -39,8 +39,7 @@
 
 1. The input file format can be edited according to data/data_0/raw/train_0.csv. Within the data folder, create three subfolders named raw, intermediate, and result respectively. These folders are utilized for the generation of files during the molecular processing process；
 
-2. The model comprises 20 sub-models. After downloading the weight files for these sub-models, place them in the weight folder. Then, execute model.py to commence the process. https://www.alipan.com/s/Wyy14DP8MNA
-   
-3. The ESM-2 finetuned weight can be accessed from https://pan.baidu.com/s/1NARKcZoU0Nytn06lJkQYoQ (access code:6akq).
+2. The model comprises 20 sub-models. After downloading the weight files for these sub-models, place them in the weight folder. Then, execute model.py to commence the process. Besides, the ESM-2 fintuned weight can also be accessed. （ https://pan.baidu.com/s/1riqf9yRcIbjbtNS5PjQzag access code: uqxt）
 
-5. Final results are organized into a total_soft.csv file. running metric.py will yield the final ensemble model's soft voting results.
+   
+4. Final results are organized into a total_soft.csv file. running metric.py will yield the final ensemble model's soft voting results.
